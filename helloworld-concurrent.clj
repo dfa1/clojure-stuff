@@ -1,3 +1,4 @@
+;; inspired by "Programming Clojure" (page 16)
 (def visitors (ref #{}))
 
 (defn hello [username]
@@ -11,6 +12,3 @@
 
 (hello "Davide") ;; returns "Hello Davide"
 (hello "Davide") ;; returns "Welcome back Davide"
-
-
-
