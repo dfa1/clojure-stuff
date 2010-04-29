@@ -13,14 +13,14 @@
 ;;  StringUtils.indexOfAny("aba", ['z'])           = -1
 
 (ns examples)
-
+    
 (defn index-of [str ch & others] 
   (let [keys (set (conj others ch))] 
-    (map str keys)
+    (some (fn [v] (contains? keys v)) (seq str)) 
     ))
 
-(index-of "aaa" \a \b \c \d \e)
-(set [1 2 3 4])
+(index-of "aaa"  \b \c \d \e)
 
-(defn- str-to-map
+(defn indexed [coll] (map  coll))
 
+(indexed "abcd")
