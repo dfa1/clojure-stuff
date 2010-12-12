@@ -1,12 +1,15 @@
 ;; lazy fib
-(defn- next-pair [[v1 v2]]
+(defn- next-fib-pair [[v1 v2]]
+  "Return the next fib pair"
   [v2 (+ v1 v2)])
 
 (defn lazy-fib []
-  (iterate next-pair [0 1]))
+  "Return a lazy sequence of Fibonacci numbers."
+  (map first (iterate next-fib-pair [0 1])))
 
 ;; tests
-(next-pair [10 11])
-(last (take 5 (iterate next-pair [0 1])))
+(next-fib-pair [10 11])
 (take 10 (lazy-fib))
+(nth (lazy-fib) 1011)
+
 
