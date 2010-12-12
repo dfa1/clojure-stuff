@@ -1,8 +1,7 @@
 (ns fibonacci)
 
-(defn fibonacci
+(defn fibonacci [n]
   "Classical recursive version"
-  [n]
 
   (cond 
    (= n 0) 0
@@ -11,9 +10,8 @@
     (+ (fibonacci (- n 1)) 
        (fibonacci (- n 2)))))
 
-(defn tail-fibonacci
+(defn tail-fibonacci [n]
   "Tail fibonacci"
-  [n]
 
   (letfn [(inner-fib [current next n] 
     (if (zero? n) 
@@ -21,9 +19,8 @@
       (inner-fib next (+ current next) (- n 1))))]
     (inner-fib 0 1 n)))
 
-(defn tail-fibonacci-improved
+(defn tail-fibonacci-improved [n]
   "Tail fibonacci with `recur'"
-  [n]
 
   (letfn [(inner-fib [current next n] 
     (if (zero? n) 
