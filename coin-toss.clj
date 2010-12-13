@@ -2,12 +2,15 @@
 (defn lazy-random [max]
   (repeatedly #(rand-int max)))
 
+(partition 4 (take 10 (lazy-random 2)))
+
 (take 10 (lazy-random 6))
 
 (defn- toss [n]
   (cond
    (= n 0) :head
    (= n 1) :crux))
+
 (toss 1)
 
 (defn tosses [n]

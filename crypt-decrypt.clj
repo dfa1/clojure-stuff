@@ -1,7 +1,8 @@
 ;; inspired by "Programming Clojure" (page 31)
-(ns examples)
+(ns crypt)
 
-(defn crypt [message key] 
+(defn crypt [message key]
+  "crypt message with key"
   (apply str (interleave message key)))
 
 (defn decrypt [message]
