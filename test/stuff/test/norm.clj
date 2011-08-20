@@ -3,14 +3,14 @@
   (:use [clojure.test]))
 
 (deftest test-with-zero-args[]
-  (is (= (norm) 0)))
+  (is (= 0 (norm))))
 
 (deftest test-with-one-args[]
-  (is (= (norm 2) 2)))
+  (is (= 2 (norm 2))))
 
 (deftest test-with-three-args[]
-  (is (= (norm 3 4) 5)))
+  (is (= 5 (norm 3 4))))
 
 (deftest test-with-four-args[]
-  (is (= (norm 3 3 3 3) 6)))
+  (is (= 6 (norm 3 3 3 3))))
 
