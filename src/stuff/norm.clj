@@ -10,7 +10,7 @@
 (defn squares [coll]
   "Return a lazy seq whose values are the square of coll."
   (map square coll))
-   
+
 (defn sum [coll]
   "Return the sum of the values of coll."
   (reduce + coll))
