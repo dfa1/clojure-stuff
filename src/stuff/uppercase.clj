@@ -1,8 +1,8 @@
 (ns stuff.uppercase)
 
 (defn uppercase? [string]
+  "Returns true if every letter in string is uppercase, else false."
   (let [characters (seq string)]
     (and
-     (not (empty? characters))
      (every? #(Character/isUpperCase %) (filter #(Character/isLetter %) characters)))))
 
