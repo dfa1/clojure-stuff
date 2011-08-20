@@ -16,5 +16,6 @@
 
 (defn norm [& values]
   "Return the Euclidean distance between points."
-  (Math/sqrt (sum (squares values))))
+  (-> values squares sum Math/sqrt))
+
 
