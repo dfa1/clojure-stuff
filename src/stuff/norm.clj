@@ -1,6 +1,5 @@
-(ns norm)
+(ns stuff.norm)
 
-(use 'clojure.test)
 (import java.lang.Math)
 
 (defn square [n]
@@ -18,9 +17,4 @@
 (defn norm [& values]
   "Return the Euclidean distance between points."
   (Math/sqrt (sum (squares values))))
-
-(is (= (norm) 0))
-(is (= (norm 2) 2))
-(is (= (norm 3 4) 5))
-(is (= (norm 3 3 3 3) 6))
 
