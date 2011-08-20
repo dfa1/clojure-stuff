@@ -1,13 +1,7 @@
 syntax: glob
 *~
-*.aux
-*.log
-*.dvi
-*.nav
-*.out
-*.snm
-*.toc
-*.el
+*.
+lib
+classes
+.lein-failures
 
-syntax: regexp
-(.*/)?\#[^/]*\#$
