@@ -1,4 +1,5 @@
-(ns stuff.mybutlast)
+(ns stuff.mybutlast
+  (:use [stuff.bench]))
 
 (defn mybutlast [coll]
   "A naive (and slow) implementation of butlast."
@@ -14,6 +15,7 @@
 (defn mybutlast4 [coll]
   (-> coll reverse rest reverse))
 
-
-
-
+;; simple bench
+(map
+ #(printf "%s -> %s" (first %) (second %))
+ (bench [mybutlast mybutlast2 mybutlast3 mybutlast4] (range 100)))

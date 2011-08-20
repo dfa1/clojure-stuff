@@ -1,4 +1,5 @@
-(ns fibonacci)
+(ns stuff.fibonacci
+  (:use [stuff.bench]))
 
 (defn fibonacci [n]
   "Classical recursive version"
@@ -40,7 +41,5 @@
   (nth (lazy-fibonacci-seq) n))
 
 ;; benchmarks
-(def algorithms
-     [fibonacci tail-fibonacci tail-fibonacci-improved lazy-fibonacci])
+(bench [fibonacci tail-fibonacci tail-fibonacci-improved lazy-fibonacci] 5)
 
-(map #(time (% 20)) algorithms)
