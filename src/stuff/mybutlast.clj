@@ -1,21 +1,27 @@
 (ns stuff.mybutlast
   (:use [stuff.bench]))
 
-(defn mybutlast [coll]
+(defn butlast-partition [coll]
   "A naive (and slow) implementation of butlast."
   (first (partition (dec (count coll)) coll)))
 
-(defn mybutlast2 [coll]
+(defn butlast-recursive [coll]
+  "A recursive implementation."
   (if (= (count coll) 1) ()
       (cons (first coll) (mybutlast2 (rest coll)))))
 
-(defn mybutlast3 [coll]
+(defn butlast-reverse [coll]
+  "A reverse based implementation."
   (reverse (rest (reverse coll))))
 
-(defn mybutlast4 [coll]
+(defn butlast-reverse-> [coll]
+  "Implemented with reverse and ->."
   (-> coll reverse rest reverse))
 
-;; simple bench
-(map
- #(printf "%s -> %s" (first %) (second %))
- (bench [mybutlast mybutlast2 mybutlast3 mybutlast4] (range 100)))
+;; simple benchmark
+(def *functions* [butlast-partition butlast-recursive butlast-reverse butlast-reverse->])
+(def functions-to-benchmark
+  (zipmap
+   (map #(:name (meta %)) *functions*)
+   (map #(partial % (range 100)) *functions*)))
+(bench-report 1000 functions-to-benchmark) 

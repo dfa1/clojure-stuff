@@ -22,7 +22,7 @@
 
 (defn tail-fibonacci-improved [n]
   "Tail fibonacci with `recur'"
-
+  
   (letfn [(inner-fib [current next n] 
     (if (zero? n) 
       current
@@ -40,6 +40,11 @@
 (defn lazy-fibonacci [n]
   (nth (lazy-fibonacci-seq) n))
 
-;; benchmarks
-(bench [fibonacci tail-fibonacci tail-fibonacci-improved lazy-fibonacci] 5)
+; benchmarks
+(def *functions* [fibonacci tail-fibonacci tail-fibonacci-improved lazy-fibonacci])
+(def functions-to-benchmark
+  (zipmap
+   (map #(:name (meta %)) *functions*)
+   (map #(partial % 15) *functions*)))
+(bench-report 10000 functions-to-benchmark)
 
