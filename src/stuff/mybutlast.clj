@@ -18,8 +18,12 @@
   "Implemented with reverse and ->."
   (-> coll reverse rest reverse))
 
+(defn butlast-vec-pop [coll]
+  "Karrie rocks."
+  (pop (vec coll)))
+
 ;; simple benchmark
-(def *functions* [butlast-partition butlast-recursive butlast-reverse butlast-reverse->])
+(def *functions* [butlast-partition butlast-recursive butlast-reverse butlast-reverse-> butlast-vec-pop])
 (def functions-to-benchmark
   (zipmap
    (map #(:name (meta %)) *functions*)
