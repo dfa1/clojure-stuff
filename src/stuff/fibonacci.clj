@@ -40,11 +40,26 @@
 (defn lazy-fibonacci [n]
   (nth (lazy-fibonacci-seq) n))
 
+
+(defmulti multimethod-fibonacci int)
+(defmethod multimethod-fibonacci 0 [n] 0)
+(defmethod multimethod-fibonacci 1 [n] 1)
+(defmethod multimethod-fibonacci :default [n]
+  (let [fib multimethod-fibonacci]
+    (+ (fib (- n 2)) (fib (- n 1)))))
+
 ; benchmarks
-(def *functions* [fibonacci tail-fibonacci tail-fibonacci-improved lazy-fibonacci])
-(def functions-to-benchmark
+(defn extract-fn-names [fns]
+  (map #(:name (meta %)) fns))
+
+(defn bind-params [fns]
+  (map #(partial % 10) fns))
+
+(defn prepare-functions [fns]
   (zipmap
-   (map #(:name (meta %)) *functions*)
-   (map #(partial % 15) *functions*)))
-(bench-report 10000 functions-to-benchmark)
+   (extract-fn-names fns)
+   (bind-params fns)))
+
+(def *functions* [fibonacci tail-fibonacci tail-fibonacci-improved lazy-fibonacci multimethod-fibonacci])
+(bench-report 1000 (prepare-functions *functions*))
 
