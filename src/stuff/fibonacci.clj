@@ -1,5 +1,4 @@
-(ns stuff.fibonacci
-  (:use [stuff.bench]))
+(ns stuff.fibonacci)
 
 (defn fibonacci [n]
   "Classical recursive version"
@@ -40,7 +39,6 @@
 (defn lazy-fibonacci [n]
   (nth (lazy-fibonacci-seq) n))
 
-
 (defmulti multimethod-fibonacci int)
 (defmethod multimethod-fibonacci 0 [n] 0)
 (defmethod multimethod-fibonacci 1 [n] 1)
@@ -50,7 +48,7 @@
 
 ; benchmarks
 (defn extract-fn-names [fns]
-  (map #(:name (meta %)) fns))
+  (map #(:name (meta (var %))) fns))
 
 (defn bind-params [fns]
   (map #(partial % 10) fns))
