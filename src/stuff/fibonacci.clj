@@ -45,19 +45,3 @@
 (defmethod multimethod-fibonacci :default [n]
   (let [fib multimethod-fibonacci]
     (+ (fib (- n 2)) (fib (- n 1)))))
-
-; benchmarks
-(defn extract-fn-names [fns]
-  (map #(:name (meta (var %))) fns))
-
-(defn bind-params [fns]
-  (map #(partial % 10) fns))
-
-(defn prepare-functions [fns]
-  (zipmap
-   (extract-fn-names fns)
-   (bind-params fns)))
-
-(def *functions* [fibonacci tail-fibonacci tail-fibonacci-improved lazy-fibonacci multimethod-fibonacci])
-(bench-report 1000 (prepare-functions *functions*))
-
