@@ -21,5 +21,18 @@
   "Returns a lazy taylor serie of terms."
   (throw (new UnsupportedOperationException)))
 
+(defn ! [n]
+  (reduce * (range 1 (inc n))))
+
+(defn cos-taylor-term [x n]
+  (* (/ (Math/pow -1 n) (! n)) (Math/pow x (* n 2))))
+
+(defn cos-taylor-seq [x i]
+  (lazy-seq
+   (cons (cos-taylor-term x i) (cos-taylor-seq x (inc i)))))
+
+(defn cos-taylor
+  ([x n] (reduce + (take n (cos-taylor-seq x 0))))
+  ([x] (cos-taylor x 20)))
 
 

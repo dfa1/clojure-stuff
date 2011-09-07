@@ -16,5 +16,16 @@
 (deftest test-alternate-sign []
   (is (= [-1 1 -1 1] (vec (take 4 (alternate-signs -1))))))
 
-(run-tests)
+(deftest test-0!
+  (is (= 1 (! 0))))
 
+(deftest test-1!
+  (is (= 1 (! 1))))
+
+(deftest test-2!
+  (is (= 2 (! 2))))
+
+(deftest test-3!
+  (is (= 6 (! 3))))
+
+(run-tests)
