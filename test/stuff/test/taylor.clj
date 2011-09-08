@@ -28,4 +28,3 @@
 (deftest test-3!
   (is (= 6 (! 3))))
 
-(run-tests)
