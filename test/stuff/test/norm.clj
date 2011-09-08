@@ -6,11 +6,9 @@
   (is (= 0 (norm))))
 
 (deftest test-with-one-args[]
-  (is (= 2 (norm 2))))
+  (is (= 1 (norm 1))))
 
-(deftest test-with-three-args[]
-  (is (= 5 (norm 3 4))))
+(deftest test-with-two-args[]
+  (is (= 2.23606797749979 (norm 1 2))))
 
-(deftest test-with-four-args[]
-  (is (= 6 (norm 3 3 3 3))))
 
