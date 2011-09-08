@@ -17,6 +17,6 @@
 (deftest test-benchmarks []
   (doall
    (map println (bench-report 1000
-                (prepare-functions [fibonacci tail-fibonacci tail-fibonacci-improved lazy-fibonacci multimethod-fibonacci])))))
+                              (prepare-functions [recursive-fibonacci tail-fibonacci tail-fibonacci-improved lazy-fibonacci multi-fibonacci])))))
 
 
