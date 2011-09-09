@@ -2,13 +2,13 @@
   (:use [stuff.norm])
   (:use [clojure.test]))
 
-(deftest test-with-zero-args[]
+(deftest test-with-zero-args
   (is (= 0 (norm))))
 
-(deftest test-with-one-args[]
+(deftest test-with-one-args
   (is (= 1 (norm 1))))
 
-(deftest test-with-two-args[]
+(deftest test-with-two-args
   (is (= 2.23606797749979 (norm 1 2))))
 
 

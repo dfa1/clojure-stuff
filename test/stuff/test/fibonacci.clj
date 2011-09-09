@@ -14,7 +14,7 @@
    (extract-fn-names fns)
    (bind-params fns)))
 
-(deftest test-benchmarks []
+(deftest test-benchmarks
   (doall
    (map println (bench-report 1000
                               (prepare-functions [recursive-fibonacci tail-fibonacci tail-fibonacci-improved lazy-fibonacci multi-fibonacci])))))
