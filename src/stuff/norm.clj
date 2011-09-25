@@ -1,6 +1,5 @@
-(ns stuff.norm)
-
-(import java.lang.Math)
+(ns stuff.norm
+  (:import [java.lang.Math]))
 
 (defn square [n]
   "Return the square of a number."
