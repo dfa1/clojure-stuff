@@ -1,5 +1,6 @@
 ;; doctests
 ;; inspired by python
+;; TODO: autogenerate deftest(s)
 (ns stuff.doctest)
 
 (defn sum  
@@ -20,10 +21,7 @@ user=> (sum 1 2 3)
 (defn dotest [[input, expected]]
   (let [test (.replace input "user=>" "")
         actual (eval (read-string test)) ]
-    (assert
-     (=
-      (eval (read-string expected))
-      actual)
+    (assert (= (eval (read-string expected)) actual)
      (format "failed '%s' expected: %s got: %s" test expected actual))))
 
 (defmacro docstring [f]
