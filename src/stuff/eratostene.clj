@@ -1,7 +1,8 @@
 (use 'clojure.set)
 
 (defn multiples [n upTo]
-  (set (rest (range n (inc upTo) n))))
+  (set
+   (take upTo (iterate #(+ n)))))
 
 (defn eratostene [n]
   (sort
